@@ -4,6 +4,7 @@ package org.nox.board;
 import org.nox.board.exceptions.BoardException;
 import org.nox.board.exceptions.PositionException;
 import org.nox.ships.Ship;
+import org.nox.ships.utils.Direction;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -97,7 +98,7 @@ public class Board {
         int l = ship.getLength();
         int x = ship.getPosition().getRow();
         int y = ship.getPosition().getColumn();
-        if (ship.getDirection() == it.battleship.ships.utils.Direction.HORIZONTAL) return (length - y + 1) > l;
+        if (ship.getDirection() == Direction.HORIZONTAL) return (length - y + 1) > l;
         else return (length - x + 1) > l;
     }
 
@@ -109,7 +110,7 @@ public class Board {
         column = ship.getPosition().getColumn();
 
         // Определение счетчика в зависимости от направления корабля
-        if (ship.getDirection() == it.battleship.ships.utils.Direction.HORIZONTAL)
+        if (ship.getDirection() == Direction.HORIZONTAL)
             k = column;
         else
             k = row;
@@ -121,9 +122,9 @@ public class Board {
                 return true;
 
             // Обновление координат в зависимости от направления корабля
-            if (ship.getDirection() == it.battleship.ships.utils.Direction.HORIZONTAL)
+            if (ship.getDirection() == Direction.HORIZONTAL)
                 column++;
-            else if (ship.getDirection() == it.battleship.ships.utils.Direction.VERTICAL)
+            else if (ship.getDirection() == Direction.VERTICAL)
                 row++;
         }
 
@@ -191,10 +192,10 @@ public class Board {
                     row = ship.getPosition().getRow();
                     column = ship.getPosition().getColumn();
                     for (int i = 0; i < ship.getLength() && k + i < length; i++) {
-                        if (ship.getDirection() == it.battleship.ships.utils.Direction.HORIZONTAL) {
+                        if (ship.getDirection() == Direction.HORIZONTAL) {
                             if (i == 0) k = column;
                             board[row][column + i] = SHIP;
-                        } else if (ship.getDirection() == it.battleship.ships.utils.Direction.VERTICAL) {
+                        } else if (ship.getDirection() == Direction.VERTICAL) {
                             if (i == 0) k = row;
                             board[row + i][column] = SHIP;
                         }

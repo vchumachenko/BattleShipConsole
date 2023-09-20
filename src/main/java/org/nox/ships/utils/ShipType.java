@@ -1,4 +1,4 @@
-package it.battleship.ships.utils;
+package org.nox.ships.utils;
 
 public enum ShipType {
     BOAT(4, 1),           // Тип корабля "Торпедный катер" с длиной 1 и 4 кораблями этого типа.

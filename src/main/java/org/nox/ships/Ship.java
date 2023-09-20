@@ -2,12 +2,13 @@ package org.nox.ships;
 
 import org.nox.board.Board;
 import org.nox.board.Position;
+import org.nox.ships.utils.Direction;
 
 public class Ship {
     private final String name;      // Название корабля.
     private final int length;       // Длина корабля в клетках.
     private Position position;       // Позиция корабля на игровом поле.
-    private it.battleship.ships.utils.Direction direction;     // Направление корабля (горизонтальное или вертикальное).
+    private Direction direction;     // Направление корабля (горизонтальное или вертикальное).
 
     // Конструктор для создания корабля с заданным названием и длиной.
     public Ship(String name, int length){
@@ -18,7 +19,7 @@ public class Ship {
     }
 
     // Конструктор для создания корабля с заданным названием, длиной, позицией и направлением.
-    public Ship(String name, int length, Position position, it.battleship.ships.utils.Direction direction){
+    public Ship(String name, int length, Position position, Direction direction){
         this.name = name;
         this.length = length;
         this.position = position;
@@ -46,12 +47,12 @@ public class Ship {
     }
 
     // Геттер для получения направления корабля.
-    public it.battleship.ships.utils.Direction getDirection() {
+    public Direction getDirection() {
         return direction;
     }
 
     // Сеттер для установки направления корабля.
-    public void setDirection(it.battleship.ships.utils.Direction direction) {
+    public void setDirection(Direction direction) {
         this.direction = direction;
     }
 

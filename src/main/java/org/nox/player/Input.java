@@ -5,6 +5,8 @@ import org.nox.board.Board;
 import org.nox.board.Position;
 import org.nox.board.exceptions.PositionException;
 import org.nox.game.Display;
+import org.nox.ships.utils.Direction;
+import org.nox.ships.utils.exceptions.DirectionException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -28,12 +30,12 @@ public class Input {
     }
 
     // Метод для считывания направления (горизонтальное или вертикальное) от игрока.
-    public static it.battleship.ships.utils.Direction readDirection(Scanner sc, String message) {
+    public static Direction readDirection(Scanner sc, String message) {
         try {
             System.out.print(message); // Выводим пользовательское сообщение для ввода направления.
             String s = sc.nextLine();
-            return it.battleship.ships.utils.Direction.decode(s.charAt(0)); // Декодируем введенное направление.
-        } catch (it.battleship.ships.utils.exceptions.DirectionException | StringIndexOutOfBoundsException e) {
+            return Direction.decode(s.charAt(0)); // Декодируем введенное направление.
+        } catch (DirectionException | StringIndexOutOfBoundsException e) {
             // Если возникает исключение, выводим сообщение об ошибке и просим ввести направление заново.
             Display.printError("Ошибка, допустимые значения для направления 'г' или 'в'");
             return readDirection(sc, message); // Рекурсивный вызов метода для повторного ввода.

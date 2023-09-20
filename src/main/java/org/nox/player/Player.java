@@ -8,6 +8,8 @@ import org.nox.board.exceptions.PositionException;
 import org.nox.game.Display;
 import org.nox.player.Input;
 import org.nox.ships.Ship;
+import org.nox.ships.utils.Direction;
+import org.nox.ships.utils.ShipType;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -56,9 +58,9 @@ public class Player {
     // Инициализация списка кораблей.
     private ArrayList<Ship> initShips(){
         ArrayList<Ship> list = new ArrayList<>();
-        for (it.battleship.ships.utils.ShipType type: it.battleship.ships.utils.ShipType.values()){
+        for (ShipType type: ShipType.values()){
             for (int i = 0; i < type.getNumShips(); i++){
-                list.add(new Ship(it.battleship.ships.utils.ShipType.toRussianNameShip(type), type.getShipLength()));
+                list.add(new Ship(ShipType.toRussianNameShip(type), type.getShipLength()));
             }
         }
         return list;
@@ -112,7 +114,7 @@ public class Player {
         if (!isAI) {
             boolean isAdded;
             Position position;
-            it.battleship.ships.utils.Direction direction;
+            Direction direction;
             String messageInputPosition = "- Введите координаты (Например A1): ";
             String messageInputDirection = "- Введите ориентацию(h-горизонт./v-верт.) (h/v): ";
             Scanner sc = new Scanner(System.in);
@@ -149,7 +151,7 @@ public class Player {
 
         boolean isAdded;
         Position position;
-        it.battleship.ships.utils.Direction direction;
+        Direction direction;
         int deadlock = 0, limit = 1000;
 
         for (int i = 0; i < list.size(); i++){
@@ -158,7 +160,7 @@ public class Player {
             do {
                 try {
                     position = new Position(random.nextInt(board.getLength()), random.nextInt(board.getLength()));
-                    direction = random.nextBoolean() ? it.battleship.ships.utils.Direction.VERTICAL : it.battleship.ships.utils.Direction.HORIZONTAL;
+                    direction = random.nextBoolean() ? Direction.VERTICAL : Direction.HORIZONTAL;
                     ship.setPosition(position);
                     ship.setDirection(direction);
                     isAdded = board.addShip(ship);

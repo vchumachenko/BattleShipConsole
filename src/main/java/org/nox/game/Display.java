@@ -8,6 +8,7 @@ import org.nox.game.utils.DisplayColors;
 import org.nox.player.Input;
 import org.nox.player.Player;
 import org.nox.ships.Ship;
+import org.nox.ships.utils.ShipType;
 
 import java.util.Scanner;
 
@@ -39,15 +40,15 @@ public class Display {
     public static void printRules() {
         System.out.println(DisplayColors.ANSI_YELLOW + "\nКак выиграть:" + DisplayColors.ANSI_RESET);
         System.out.println(DisplayColors.ANSI_WHITE +
-                "- Каждый игрок имеет поле боя, представленное сеткой 10x10 (по умолчанию), на которой размещаются " + it.battleship.ships.utils.ShipType.sizeAllShips() + " кораблей, скрытых от противника.\n" +
+                "- Каждый игрок имеет поле боя, представленное сеткой 10x10 (по умолчанию), на которой размещаются " + ShipType.sizeAllShips() + " кораблей, скрытых от противника.\n" +
                 "- Цель игры - потопить все корабли противника! Корабль считается потопленным, если он был подбит в каждой из своих клеток.\n" +
-                "- Другими словами, корабль " + it.battleship.ships.utils.ShipType.toRussianNameShip(it.battleship.ships.utils.ShipType.values()[0]) + ", занимающий " + it.battleship.ships.utils.ShipType.values()[0].getShipLength() + " клеток, считается потопленным после одного попадания.\n" +
-                "- Все " + it.battleship.ships.utils.ShipType.sizeAllShips() + " кораблей занимают в сумме " + it.battleship.ships.utils.ShipType.lengthAllShips() + " клеток, поэтому первый игрок, зарегистрировавший 20 попаданий, выигрывает!" +
+                "- Другими словами, корабль " + ShipType.toRussianNameShip(ShipType.values()[0]) + ", занимающий " + ShipType.values()[0].getShipLength() + " клеток, считается потопленным после одного попадания.\n" +
+                "- Все " +  ShipType.sizeAllShips() + " кораблей занимают в сумме " + ShipType.lengthAllShips() + " клеток, поэтому первый игрок, зарегистрировавший 20 попаданий, выигрывает!" +
                 DisplayColors.ANSI_RESET);
 
         System.out.println(DisplayColors.ANSI_YELLOW + "\nГеймплей:" + DisplayColors.ANSI_RESET);
         System.out.println(DisplayColors.ANSI_WHITE +
-                "- Для начала игры следуйте инструкциям по настройке ваших " + it.battleship.ships.utils.ShipType.sizeAllShips() + " кораблей в любом месте, которое вам нравится (не разрешается устанавливать их по диагонали или смежно с другими кораблями).\n" +
+                "- Для начала игры следуйте инструкциям по настройке ваших " + ShipType.sizeAllShips() + " кораблей в любом месте, которое вам нравится (не разрешается устанавливать их по диагонали или смежно с другими кораблями).\n" +
                 "- Для размещения корабля необходимо указать начальные координаты (A1-J10 для стандартной сетки 10x10) и направление (вертикальное или горизонтальное).\n" +
                 "- Например: A1 или B7. Корабли не могут перекрываться или смежно располагаться (соприкасаться друг с другом), и вы должны оставаться в пределах границ поля.\n" +
                 "- Как только оба игрока настроят свои корабли, начинается битва!\n" +
@@ -58,9 +59,9 @@ public class Display {
                 "- Чтобы выиграть, потопите все 8 кораблей компьютера!" +
                 DisplayColors.ANSI_RESET);
         System.out.println(DisplayColors.ANSI_YELLOW + "\nЛегенда:" + DisplayColors.ANSI_RESET);
-        for (it.battleship.ships.utils.ShipType type : it.battleship.ships.utils.ShipType.values()) {
+        for (ShipType type : ShipType.values()) {
             System.out.println(DisplayColors.ANSI_WHITE +
-                    "- (" + DisplayColors.ANSI_YELLOW + Board.SHIP + DisplayColors.ANSI_WHITE + "x" + type.getShipLength() + ")\t: " + it.battleship.ships.utils.ShipType.toRussianNameShip(type) +
+                    "- (" + DisplayColors.ANSI_YELLOW + Board.SHIP + DisplayColors.ANSI_WHITE + "x" + type.getShipLength() + ")\t: " + ShipType.toRussianNameShip(type) +
                     DisplayColors.ANSI_RESET);
         }
         System.out.println(

@@ -1,6 +1,7 @@
-package it.battleship.ships.utils;
+package org.nox.ships.utils;
 
-import it.battleship.ships.utils.exceptions.DirectionException;
+
+import org.nox.ships.utils.exceptions.DirectionException;
 
 public enum Direction {
     HORIZONTAL, // Горизонтальное направление (горизонтально расположенные корабли).
